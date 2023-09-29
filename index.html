@@ -1,5 +1,4 @@
 <!doctype html>
-<html lang="en">
   <html lang="en">
     <head>
       <!-- Primary Meta Tags -->
@@ -67,9 +66,12 @@
         type="image/x-icon"
         href="assets/gdscfavi.png"
       />
+      <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     </head>
 
     <body>
+
+    <audio src="./assets/sound.mp3" autoplay></audio> 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a href="https://gdsc.community.dev/fet-jain-university-bengaluru/">
@@ -103,11 +105,8 @@
               ><span class="num24">24</span></b
             >
           </h4>
-          <div class="custom-menu__right w-75 mx-auto">
-            <i class="fa-solid fa-magnifying-glass icon"></i>
-            <input id="input" class="p-2 w-100" type="text" id="gccp_search" />
-          </div>
-        </div>
+          <h1><strong>Congratulations To Everyone</strong></h1>
+          <br>
         <table class="table table-hover fa-border">
           <thead>
             <tr>
@@ -121,7 +120,7 @@
           </thead>
           <tbody id="gccp_body"></tbody>
         </table>
-        <script>
+        <script defer>
           const updateData = async (filter) => {
             let data = await (await fetch("./data.json")).json();
             let total_started = 0;
@@ -138,23 +137,22 @@
 
             data.forEach((d, i) => {
               html += `
-                       <tr>
-                         <th>${i + 1}</th>
-                         <td>${d["NAME"]}</td>
-                         <td>${d["SKILL BADGE"]}</td>
-                         <td>${d["COURSES"]}</td>
-                         <td>${d["ALL DONE"]}</td>
-                         <td>${d["GOODIES"]}</td>
+                      <tr>
+                        <th>${i + 1}</th>
+                        <td>${d["NAME"]}</td>
+                        <td>${d["SKILL BADGE"]}</td>
+                        <td>${d["COURSES"]}</td>
+                        <td>${d["ALL DONE"]}</td>
+                        <td>${d["GOODIES"]}</td>
                     </tr>
-                       `;
+                      `;
             });
             document.getElementById("gccp_body").innerHTML = html;
           };
           updateData("");
-          const input = document.getElementById("input");
-          input.addEventListener("input", () => {
-            console.log(input.value);
-            updateData(input.value);
+          party.confetti(document.body, {
+            count: party.variation.range(100, 200),
+            angleSpan: party.variation.range(90, 180),
           });
         </script>
       </div>
@@ -172,5 +170,9 @@
         </div>
       </footer>
     </body>
+    <script>
+      document.addEventListener("click", () => {
+        document.getElementsByTagName('audio')[0].play();
+      })
+    </script>
   </html>
-</html>
