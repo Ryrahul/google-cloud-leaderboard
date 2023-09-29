@@ -118,10 +118,6 @@
               <th scope="col"><b>COURSES</b></th>
               <th scope="col"><b>ALL DONE</b></th>
               <th scope="col"><b>GOODIES</b></th>
-              <th scope="col"><b>SKILL BADGE</b></th>
-              <th scope="col"><b>COURSES</b></th>
-              <th scope="col"><b>ALL DONE</b></th>
-              <th scope="col"><b>GOODIES</b></th>
             </tr>
           </thead>
           <tbody id="gccp_body"></tbody>
@@ -130,21 +126,10 @@
         <script defer>
           const updateData = async (filter) => {
             let data = await (await fetch("./data.json")).json();
-            let data = await (await fetch("./data.json")).json();
             let total_started = 0;
-            if (filter !== "") {
-            if (filter !== "") {
-              data = data.filter((el) => {
-                return el["Student Name"]
-                return el["Student Name"]
-                  .toLowerCase()
-                  .includes(filter.toLowerCase());
-              });
-            }
 
 
             let total_reg = data.length;
-            let html = "";
 
             let html = "";
 
